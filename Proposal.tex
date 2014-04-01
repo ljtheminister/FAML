@@ -1,0 +1,47 @@
+\documentclass{article}
+
+\author{Victor Ferrand, John Min}
+\title{COMS 4772 Advanced Machine Learning Final Project Proposal}
+
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amssymb, amsmath, parallel, mathtools, graphicx, array, pdfpages}
+
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\Rn}{\R^n}
+\newcommand{\Rm}{\R^m}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\grad}{\nabla}
+\newcommand{\Rnn}{\R^{n\times n}}
+\newcommand{\map}[3]{#1:#2\rightarrow #3}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\Rmn}{\R^{m\times n}}
+\newcommand{\tpose}[1]{#1^{\scriptscriptstyle T}}
+\newcommand{\indicator}[2]{\delta\left(#1 \mid #2 \right)}
+
+\begin{document}
+\maketitle
+
+\section{Problem}
+The data set is a commercial building's steam usage discretized in 15-minute intervals throughout the day.  The problem is to make predictions on steam usage based on weather prediction data as well as by building an $n$-order Markov chain feature vector.  This problem is of interest because the more out-of-the box algorithms such as linear, Support Vector, and Random Forest regressions have proven to be ineffective in their predictions.
+
+\section{Proposal}
+Thus, we are proposing to tackle this time-series prediction problem using grapical model based approaches such as HMMs, LDS, and neural networks to improve prediction oucomes.
+
+
+\section{References}
+
+
+
+
+
+http://download.springer.com/static/pdf/299/art%253A10.1007%252Fs12273-013-0138-3.pdf?auth66=1396550330_b0d321cc5f739887a580b72928d249ea&ext=.pdf
+
+http://cs229.stanford.edu/proj2012/LaiLiPong-ForecastingTradeDirectionandSizeOfFutureContractsUsingDeepBeliefNetwork.pdf
+
+
+
+Design of Deep Belief Networks for Short-Term Prediction of Drought Index Using Data in the Huaihe River Basin
+
+http://www.hindawi.com/journals/mpe/2012/235929/
+
+\end{document}
