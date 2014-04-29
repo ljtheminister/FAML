@@ -29,6 +29,9 @@ weather.sort_index(inplace=True)
 weather = weather.interpolate()
 weather = weather.ix[dt_index,:]
 
+weather = weather.ix[['TempM', 'DewpointM', 'PressureM', 'WindChillM', 'HeatIndexM']
+
+
 weather.to_pickle('weather.pkl')
 
 steam = pd.read_csv('RUDINSERVER_CURRENT_STEAM_DEMAND_FX70.csv')
@@ -43,7 +46,25 @@ steam.index = steam_index
 steam = steam.ix[:, 'Steam']
 steam.to_pickle('steam.pkl')
 
-#data = pd.DataFrame(steam).join(weather)
+data = pd.DataFrame(steam).join(weather)
+data.to_pickle('data.pkl')
+
+'''
+add day of week
+add season
+'''
+data['dayofweek'] = [d.weekday() for d in data.index]
+
+#time lag - shifting time periods
+
+data['lag1'] = data['Steam'].shift(-1)
+data['lag2'] = data['Steam'].shift(-2)
+data['lag3'] = data['Steam'].shift(-3)
+data['lag4'] = data['Steam'].shift(-4)
+
+
+
+
 
 
 
