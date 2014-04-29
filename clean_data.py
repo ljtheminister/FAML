@@ -55,6 +55,13 @@ add season
 '''
 data['dayofweek'] = [d.weekday() for d in data.index]
 
+from sklearn.preprocessing import OneHotEncoder
+n_values = np.repeat(7, len(data['dayofweek']))
+
+enc = OneHotEncoder(n_values=n_values)
+y = enc.fit(np.matrix(data['dayofweek']).T)
+
+
 #time lag - shifting time periods
 
 data['lag1'] = data['Steam'].shift(-1)
