@@ -41,8 +41,9 @@ dt_fmt = '%Y-%m-%d %H:%M'
 steam_index = [dt.datetime.strptime(ts[:16], dt_fmt) for ts in steam['TIMESTAMP']]
 steam.index = steam_index
 steam = steam.ix[:, 'Steam']
+steam.to_pickle('steam.pkl')
 
-data = pd.DataFrame(steam).join(weather)
+#data = pd.DataFrame(steam).join(weather)
 
 
 
