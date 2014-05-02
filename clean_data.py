@@ -3,8 +3,8 @@ import pandas as pd
 import time
 import datetime as dt
 import cPickle as pickle
-
 from numpy import exp
+from workalendar.america import UnitedStates
 
 ### Weather Covariates
 wx_obs = pd.read_csv('[Weather].dbo.[Observations_History].csv', delimiter=',', header=None)
@@ -62,7 +62,7 @@ empty_steam = pd.DataFrame(pd.Series(index=new_indices))
 empty_steam.columns = ['Steam']
 steam = pd.concat([steam, empty_steam])
 steam.sort_index(inplace=True)
-steam.interpolate()
+steam = steam.interpolate()
 steam = steam.ix[steam_index, 'Steam']
 
 # merge weather and steam
@@ -80,25 +80,37 @@ Y.index = data.index
 data = data.join(Y)
 
 #time lag - shifting time periods
-data['lag1'] = data['Steam'].shift(-1)
-data['lag2'] = data['Steam'].shift(-2)
-data['lag3'] = data['Steam'].shift(-3)
-data['lag4'] = data['Steam'].shift(-4)
-data['lag5'] = data['Steam'].shift(-5)
-data['lag6'] = data['Steam'].shift(-6)
-data['lag7'] = data['Steam'].shift(-7)
-data['lag8'] = data['Steam'].shift(-8)
+data['lag1'] = data['Steam'].shift(1)
+data['lag2'] = data['Steam'].shift(2)
+data['lag3'] = data['Steam'].shift(3)
+data['lag4'] = data['Steam'].shift(4)
+data['lag5'] = data['Steam'].shift(5)
+data['lag6'] = data['Steam'].shift(6)
+data['lag7'] = data['Steam'].shift(7)
+data['lag8'] = data['Steam'].shift(8)
 
+'''
+data.to_pickle('data.pkl')
 data.to_csv('data.csv')
+data = pd.read_pickle('data.pkl')
+'''
 
+cal = UnitedStates()
+fed_holidays = []
+fed_holidays += cal.holidays(2011)
+fed_holidays += cal.holidays(2012)
+fed_holidays += cal.holidays(2013)
+fed_holidays += cal.holidays(2014)
 
+fed_holidays_indices = []
+for h in fed_holidays:
+    for d in pd.date_range(h[0], periods=96, freq='15min'):
+        fed_holidays_indices.append(d)
 
+data['federal_holiday'] = [0 for t in data.index]
+fh_idx = list(set(fed_holidays_indices)&set(data.index))
+data.ix[fh_idx, 'federal_holiday'] = np.ones(len(fh_idx))
 
-
-
-
-
-
-
-
-
+data = data.ix[8:,:]
+data.to_pickle('data.pkl')
+data.to_csv('data.csv')
