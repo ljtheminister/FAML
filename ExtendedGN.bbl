@@ -1,0 +1,120 @@
+\begin{thebibliography}{10}
+
+\bibitem{Angelosante2009}
+D.~Angelosante, S.I. Roumeliotis, and G.B. Giannakis.
+\newblock Lasso-kalman smoother for tracking sparse signals.
+\newblock In {\em Signals, Systems and Computers, 2009 Conference Record of the
+  Forty-Third Asilomar Conference on}, pages 181--185, nov. 2009.
+
+\bibitem{AravkinThesis2010}
+A.Y. Aravkin.
+\newblock {\em Robust Methods with Applications to Kalman Smoothing and Bundle
+  Adjustment}.
+\newblock PhD thesis, University of Washington, Seattle, WA, June 2010.
+
+\bibitem{Aravkin2011tac}
+A.Y. Aravkin, B.M. Bell, J.V. Burke, and G.~Pillonetto.
+\newblock An $\ell_1$-laplace robust kalman smoother.
+\newblock {\em Automatic Control, IEEE Transactions on}, 56(12):2898--2911,
+  dec. 2011.
+
+\bibitem{StArxiv}
+A.Y. Aravkin, J.V. Burke, and G.~Pillonetto.
+\newblock \href{http://arxiv.org/a} {Robust and Trend-following Kalman
+  Smoothers using Student’s t }.
+\newblock In {\em IFAC, 16th Symposium of System Identification}, oct. 2011.
+
+\bibitem{RobustSparseArxiv}
+A.Y. Aravkin, J.V. Burke, and G.~Pillonetto.
+\newblock \href{http://arxiv.org/abs/1111.2730} {A statistical and
+  computational theory for robust and sparse {K}alman smoothing}.
+\newblock In {\em IFAC, 16th Symposium of System Identification}, oct. 2011.
+
+\bibitem{YAA}
+Y.~Bar-Shalom, X.~Rong Li, and T.~Kirubarajan.
+\newblock {\em Estimation with Applications to Tracking and Navigation}.
+\newblock John Wiley and Sons, 2001.
+
+\bibitem{Bell1994}
+B.M. Bell.
+\newblock The iterated {Kalman} smoother as a {Gauss-Newton} method.
+\newblock {\em SIAM J. Optimization}, 4(3):626--636, August 1994.
+
+\bibitem{Bell2000}
+B.M. Bell.
+\newblock The marginal likelihood for parameters in a discrete {Gauss-Markov}
+  process.
+\newblock {\em IEEE Transactions on Signal Processing}, 48(3):626--636, August
+  2000.
+
+\bibitem{Bell2008}
+B.M. Bell, J.V. Burke, and G.~Pillonetto.
+\newblock An inequality constrained nonlinear kalman-bucy smoother by interior
+  point likelihood maximization.
+\newblock {\em Automatica}, 45(1):25--33, January 2009.
+
+\bibitem{Bell1995}
+B.M. Bell, J.V. Burke, and A.~Schumitzky.
+\newblock A relative weighting method for estimating parameters and variances
+  in multiple data sets.
+\newblock {\em Computational Statistics and Data Analysis}, 22:119--135, 1996.
+
+\bibitem{Burke1985}
+J.V. Burke.
+\newblock Descent methods for composite nondifferentiable optimization
+  problems.
+\newblock {\em Mathematical Programming}, 33:260--279, 1985.
+
+\bibitem{chui2008kalman}
+C.K. Chui and G.~Chen.
+\newblock {\em Kalman Filtering: with Real-Time Applications}.
+\newblock Springer series in information sciences. Springer, 2008.
+
+\bibitem{Dutka2006}
+A.~Dutka, H.~Javaherian, and M.J. Grimble.
+\newblock State-dependent {K}alman filters for robust engine control.
+\newblock In {\em Proceedings of the 2006 American Control Conference}, pages
+  1185--1190, 2006.
+
+\bibitem{Jaz}
+Andrew Jazwinski.
+\newblock {\em Stochastic Processes and Filtering Theory}.
+\newblock Dover Publications, Inc, 1970.
+
+\bibitem{kalman}
+R.~E. Kalman.
+\newblock A new approach to linear filtering and prediction problems.
+\newblock {\em Transactions of the AMSE - Journal of Basic Engineering},
+  82(D):35--45, 1960.
+
+\bibitem{McIntyre1998}
+G.A. McIntyre and K.J. Hintz.
+\newblock A comparison of several maneuvering target tracking models.
+\newblock In {\em SPIE Conference on Signal Processing, Sensor Fusion, and
+  Target Recognition VII}, volume 3374, pages 48--63, April 1998.
+
+\bibitem{Oks}
+Bernt Oksendal.
+\newblock {\em Stochastic Differential Equations}.
+\newblock Springer, sixth edition, 2005.
+
+\bibitem{RTS}
+H.~E. Rauch, F.~Tung, and C.~T. Striebel.
+\newblock Maximum likelihood estimates of linear dynamic systems.
+\newblock {\em AIAA J.}, 3(8):1145--1150, 1965.
+
+\bibitem{Stakk2009}
+M.~Stakkeland, O.~Overrein, and E.F. Brekke.
+\newblock Tracking of targets with state dependent measurement errors using
+  recursive {BLUE} filters.
+\newblock In {\em 12th International Conference on Information Fusion}, pages
+  2052--2061, 2009.
+
+\bibitem{Zehnwirth1988}
+B.~Zehnwirth.
+\newblock A generalization of the {K}alman filter for models with
+  state-dependent observation variance.
+\newblock {\em Journal of the Amer. Stat. Association}, 83(401):164--167, March
+  1988.
+
+\end{thebibliography}

@@ -1,3 +1,5 @@
+import pandas as pd
+import numpy as np
 import cPickle as pickle
 import random
 
@@ -32,29 +34,31 @@ def split_train_test(X, y, train_prop):
     return X_train, y_train, X_test, y_test, train_idx, test_idx
 
 # Linear Regression (LR)
-def linear_regression(X_train, y_train, X_test, y_test):
+#def linear_regression(X_train, y_train, X_test, y_test):
+
+
+#data1 = pd.read_pickle('data.pkl')
+data1 = pd.read_pickle('data_norm.pkl')
+y = data1['Steam'].values
+#data1.drop(['WindGustM', 'WindChillM', 'HeatIndexM', 'PrecipM'], axis=1, inplace=True)
+#data = (data1 - data1.mean())/data1.std()
+y = data1['Steam'].values
+X = np.array(data1.drop('Steam', axis=1))
+X_train, y_train, X_test, y_test, train_idx, test_idx = split_train_test(X,y,.80)
+
 LR = LinearRegression()
 LR.fit(X_train,y_train)
 y_LR= LR.predict(X_test)
+svr = SVR(kernel='rbf')
+svr.fit(X_train, y_train)
+y_SVR = svr.predict(X_test)
 
-
-data = pd.read_pickle('data.pkl')
-y = np.array(data['Steam'])
-X = np.array(data.drop('Steam', axis=1))
-
-X_train, y_train, X_test, y_test, train_idx, test_idx = split_train_test(X,y,.80)
-
-
+RF = RandomForestRegressor(n_estimators=50)
+RF.fit(X_train, y_train)
+y_RF= RF.predict(X_test)
 
 y_test += 1e-10
-e_LR = np.abs(y_LR - y_test)
-MAPE_LR = e_LR/y_test
-plt.plot_date(dates, MAPE_LR)
-dates = matplotlib.dates.date2num(data.index[test_idx])
-plt.plot_date(dates, e_LR)
-
-e_SVR = np.abs(y_SVR - y_test)
-e_RF = np.abs(y_RF - y_test)
+dates = matplotlib.dates.date2num(data1.index[test_idx])
 
 svr_error = y_test - y_SVR
 rf_error = y_test - y_RF
@@ -62,50 +66,49 @@ lr_error = y_test - y_LR
 
 plt.plot_date(dates, svr_error)
 plt.xlabel('Date')
-plt.ylabel('Absolute error (Million pounds of steam)')
+plt.ylabel('Absolute error (Million pounds of steam per hour)')
 plt.title('Absolute error of steam demand prediction (SVR)')
 plt.savefig('SVR_error.png')
 
 plt.plot_date(dates, rf_error)
 plt.xlabel('Date')
-plt.ylabel('Absolute error (Million pounds of steam)')
+plt.ylabel('Absolute error (Million pounds of steam per hour)')
 plt.title('Absolute error of steam demand prediction (RF w/ 50 trees)')
 plt.savefig('RF_error.png')
 
 plt.plot_date(dates, lr_error)
 plt.xlabel('Date')
-plt.ylabel('Absolute error (Million pounds of steam)')
+plt.ylabel('Absolute error (Million pounds of steam per hour)')
 plt.title('Absolute error of steam demand prediction (LR)')
 plt.savefig('LR_error.png')
 
+svr_rel = (svr_error)/y_test
+rf_rel = (rf_error)/y_test
+lr_rel = (lr_error)/y_test
 
+plt.plot_date(dates, svr_rel)
+plt.xlabel('Date')
+plt.ylabel('Relative Error (Million pounds of steam per hour)')
+plt.title('Relative error of steam demand prediction (SVR)')
+plt.savefig('SVR_error_rel.png')
 
+plt.plot_date(dates, rf_rel)
+plt.xlabel('Date')
+plt.ylabel('Relative error (Million pounds of steam per hour)')
+plt.title('Relative error of steam demand prediction (RF w/ 50 trees)')
+plt.savefig('RF_error_rel.png')
 
-# Support Vector Regression (SVR)
-def support_vector_regression(X_train, y_train, X_test, y_test):
-    
-svr = SVR(kernel='rbf')
-svr.fit(X_train, y_train)
-y_SVR = svr.predict(X_test)
+plt.plot_date(dates, lr_rel)
+plt.xlabel('Date')
+plt.ylabel('Relative error (Million pounds of steam per hour)')
+plt.title('Relative error of steam demand prediction (LR)')
+plt.savefig('LR_error_rel.png')
 
-# Random Forest Regression (RF)
-def random_forest_regression(X_train, y_train, X_test, y_test, n_trees=10):
-RF = RandomForestRegressor(n_estimators=50)
-RF.fit(X_train, y_train)
-y_RF= RF.predict(X_test)
-
-
-
-
-# Hidden Markov Models (HMM)
-
-
-def hmm_multinomial(y_train, y_test):
-    HMM = MultinomialHMM()
+'''
 
 # Gaussian Mixture Model Hidden Markov Models (GMM-HMM)
 def gmm_hmm(y_train, y_test):
     GMM_HMM = GMMHMM(n_components=2)
 
-
+'''
 
